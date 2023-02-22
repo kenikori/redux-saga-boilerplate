@@ -5,7 +5,6 @@ import { IUserResponse } from "../../types/response/user.response";
 import { userActions } from "./user.reducer";
 
 function* getUserDataRequest(action: PayloadAction<{ userId: number }>) {
-  console.log("SAGA", action);
   try {
     const response: IUserResponse = yield call(
       userApi.getUserData,

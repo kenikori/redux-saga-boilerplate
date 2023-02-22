@@ -7,7 +7,6 @@ import { IUserResponse } from "../../types/response/user.response";
 import { postActions } from "./post.reducer";
 
 function* getPostDataRequest(action: PayloadAction<{ postId: number }>) {
-  console.log("SAGA", action);
   try {
     const post: IPostResponse = yield call(
       postApi.getPost,

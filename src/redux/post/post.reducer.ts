@@ -7,13 +7,11 @@ export const postSlice = createSlice({
   initialState: initialPostStore,
   reducers: {
     getPostDataRequest: (state, action: PayloadAction<{ postId: number }>) => {
-      console.log("REDUCER", action);
       state.post = undefined;
       state.isRequesting = true;
       state.errorMessage = undefined;
     },
     getPostDataSuccess: (state, action: PayloadAction<IPost>) => {
-      console.log("REDUCER", action);
       state.isRequesting = false;
       state.post = action.payload;
     },
@@ -21,7 +19,6 @@ export const postSlice = createSlice({
       state,
       action: PayloadAction<{ errorMessage: string }>
     ) => {
-      console.log("REDUCER", action);
       state.isRequesting = false;
       state.errorMessage = action.payload.errorMessage;
     },

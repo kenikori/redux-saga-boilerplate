@@ -7,13 +7,11 @@ export const userSlice = createSlice({
   initialState: initialUserStore,
   reducers: {
     getUserDataRequest: (state, action: PayloadAction<{ userId: number }>) => {
-      console.log("REDUCER", action);
       state.user = undefined;
       state.isRequesting = true;
       state.errorMessage = undefined;
     },
     getUserDataSuccess: (state, action: PayloadAction<IUserResponse>) => {
-      console.log("REDUCER", action);
       state.isRequesting = false;
       state.user = action.payload;
     },
@@ -21,7 +19,6 @@ export const userSlice = createSlice({
       state,
       action: PayloadAction<{ errorMessage: string }>
     ) => {
-      console.log("REDUCER", action);
       state.isRequesting = false;
       state.errorMessage = action.payload.errorMessage;
     },
