@@ -1,4 +1,3 @@
-import React from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { postActions } from "../../redux/post/post.reducer";
 import { BoxElement } from "../BoxElement/BoxElement";
