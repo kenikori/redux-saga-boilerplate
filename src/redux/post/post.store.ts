@@ -1,5 +1,5 @@
-import { RequestTypes } from "../../types/request.types";
 import { IPost } from "../../types/post";
+import { RequestTypes } from "../../types/request.types";
 
 export interface IPostStore {
   post: IPost | undefined;

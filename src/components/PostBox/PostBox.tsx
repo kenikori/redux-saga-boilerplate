@@ -5,7 +5,7 @@ import { BoxElement } from "../BoxElement/BoxElement";
 import { Button } from "../Button/Button";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 
-export const PostBox = () => {
+export function PostBox() {
   const dispatch = useAppDispatch();
 
   const requestStatus = useAppSelector((state) => state.post.requestStatus);
@@ -29,4 +29,4 @@ export const PostBox = () => {
       <BoxElement label="User" value={post?.user.name} />
     </div>
   );
-};
+}

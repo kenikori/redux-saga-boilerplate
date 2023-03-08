@@ -1,24 +1,24 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { put, all, call, takeLeading, delay } from "redux-saga/effects";
-import userApi from "../../networking/api/userApi";
+import { all, call, put, takeLeading } from "redux-saga/effects";
+
+import { getUserData } from "../../networking/api/userApi";
+import { IUserRequest } from "../../types/request/user.request";
 import { IUserResponse } from "../../types/response/user.response";
 import { userActions } from "./user.reducer";
 
-function* getUserDataRequest(action: PayloadAction<{ userId: number }>) {
+export function* getUserDataRequest(action: PayloadAction<IUserRequest>) {
   try {
     const response: IUserResponse = yield call(
-      userApi.getUserData,
+      getUserData,
       action.payload.userId
     );
 
-    yield delay(500);
-
     yield put(userActions.getUserDataSuccess(response));
-  } catch (error: any) {
+  } catch (error) {
     const errorMessage =
-      error.message ?? "Something went wrong. Please try again.";
+      (error as Error).message ?? "Something went wrong. Please try again.";
 
-    yield put(userActions.getUserDataFailure(errorMessage));
+    yield put(userActions.getUserDataFailure({ errorMessage }));
   }
 }
 

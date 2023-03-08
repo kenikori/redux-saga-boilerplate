@@ -1,13 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RequestTypes } from "../../types/request.types";
+
 import { IPost } from "../../types/post";
+import { RequestTypes } from "../../types/request.types";
+import { IPostRequest } from "../../types/request/post.request";
 import { initialPostStore } from "./post.store";
 
 export const postSlice = createSlice({
   name: "post",
   initialState: initialPostStore,
   reducers: {
-    getPostDataRequest: (state, action: PayloadAction<{ postId: number }>) => {
+    getPostDataRequest: (state, action: PayloadAction<IPostRequest>) => {
       state.post = undefined;
       state.requestStatus = RequestTypes.loading;
       state.errorMessage = undefined;

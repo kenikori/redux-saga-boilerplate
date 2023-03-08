@@ -5,7 +5,7 @@ import { BoxElement } from "../BoxElement/BoxElement";
 import { Button } from "../Button/Button";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 
-export const UserBox = () => {
+export function UserBox() {
   const dispatch = useAppDispatch();
 
   const requestStatus = useAppSelector((state) => state.user.requestStatus);
@@ -27,4 +27,4 @@ export const UserBox = () => {
       <BoxElement label="Name" value={user?.name} />
     </div>
   );
-};
+}

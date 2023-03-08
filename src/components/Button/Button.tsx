@@ -1,12 +1,12 @@
-export const Button = ({
+export function Button({
   label,
-  disabled = false,
-  onClick = () => {},
+  disabled,
+  onClick,
 }: {
   label: string;
   disabled?: boolean;
   onClick?(): void;
-}) => {
+}) {
   const disabledCss = disabled ? " disabled" : "";
 
   return (
@@ -19,4 +19,11 @@ export const Button = ({
       {label}
     </button>
   );
+}
+
+Button.defaultProps = {
+  disabled: false,
+  onClick: () => {
+    /** */
+  },
 };
