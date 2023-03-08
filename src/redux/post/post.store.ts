@@ -1,13 +1,14 @@
+import { RequestTypes } from "../../types/request.types";
 import { IPost } from "../../types/post";
 
 export interface IPostStore {
   post: IPost | undefined;
-  isRequesting: boolean;
+  requestStatus: RequestTypes;
   errorMessage: string | undefined;
 }
 
 export const initialPostStore: IPostStore = {
   post: undefined,
-  isRequesting: false,
+  requestStatus: RequestTypes.idle,
   errorMessage: undefined,
 };

@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { userActions } from "../../redux/user/user.reducer";
+import { RequestTypes } from "../../types/request.types";
 import { BoxElement } from "../BoxElement/BoxElement";
 import { Button } from "../Button/Button";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
@@ -7,7 +8,7 @@ import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 export const UserBox = () => {
   const dispatch = useAppDispatch();
 
-  const isRequesting = useAppSelector((state) => state.user.isRequesting);
+  const requestStatus = useAppSelector((state) => state.user.requestStatus);
   const errorMessage = useAppSelector((state) => state.user.errorMessage);
   const user = useAppSelector((state) => state.user.user);
 
@@ -18,7 +19,7 @@ export const UserBox = () => {
         onClick={() => {
           dispatch(userActions.getUserDataRequest({ userId: 1 }));
         }}
-        disabled={isRequesting}
+        disabled={requestStatus === RequestTypes.loading}
       />
 
       <ErrorMessage message={errorMessage} />

@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { postActions } from "../../redux/post/post.reducer";
+import { RequestTypes } from "../../types/request.types";
 import { BoxElement } from "../BoxElement/BoxElement";
 import { Button } from "../Button/Button";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
@@ -7,7 +8,7 @@ import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 export const PostBox = () => {
   const dispatch = useAppDispatch();
 
-  const isRequesting = useAppSelector((state) => state.post.isRequesting);
+  const requestStatus = useAppSelector((state) => state.post.requestStatus);
   const errorMessage = useAppSelector((state) => state.post.errorMessage);
   const post = useAppSelector((state) => state.post.post);
 
@@ -18,7 +19,7 @@ export const PostBox = () => {
         onClick={() => {
           dispatch(postActions.getPostDataRequest({ postId: 32 }));
         }}
-        disabled={isRequesting}
+        disabled={requestStatus === RequestTypes.loading}
       />
 
       <ErrorMessage message={errorMessage} />
