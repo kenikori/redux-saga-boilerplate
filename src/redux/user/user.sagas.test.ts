@@ -2,9 +2,10 @@ import { expectSaga } from "redux-saga-test-plan";
 import * as matchers from "redux-saga-test-plan/matchers";
 
 import { getUserData } from "../../networking/api/userApi";
+import { RequestTypes } from "../../types/request.types";
 import { IUserRequest } from "../../types/request/user.request";
 import { IUserResponse } from "../../types/response/user.response";
-import { userActions } from "./user.reducer";
+import userReducer, { userActions } from "./user.reducer";
 import { getUserDataRequest } from "./user.sagas";
 
 const userDataRequest: IUserRequest = { userId: 1 };
@@ -38,12 +39,39 @@ const mockUserResponse: IUserResponse = {
   },
 };
 
-test("get user data", () => {
+test("succeeded get user data", () => {
   return expectSaga(getUserDataRequest, getUserDataRequestAction)
+    .withReducer(userReducer)
     .provide([[matchers.call.fn(getUserData), mockUserResponse]])
     .put({
       type: userActions.getUserDataSuccess.type,
       payload: mockUserResponse,
+    })
+    .hasFinalState({
+      user: mockUserResponse,
+      requestStatus: RequestTypes.succeeded,
+      errorMessage: undefined,
+    })
+    .run();
+});
+
+test("failed get user data", () => {
+  return expectSaga(getUserDataRequest, getUserDataRequestAction)
+    .withReducer(userReducer)
+    .provide([
+      [
+        matchers.call.fn(getUserData),
+        Promise.reject(new Error("User not found.")),
+      ],
+    ])
+    .put({
+      type: userActions.getUserDataFailure.type,
+      payload: { errorMessage: "User not found." },
+    })
+    .hasFinalState({
+      user: undefined,
+      requestStatus: RequestTypes.failed,
+      errorMessage: "User not found.",
     })
     .run();
 });
