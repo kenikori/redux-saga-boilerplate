@@ -1,29 +1,10 @@
-export function Button({
-  label,
-  disabled,
-  onClick,
-}: {
-  label: string;
-  disabled?: boolean;
-  onClick?(): void;
-}) {
-  const disabledCss = disabled ? " disabled" : "";
+import { Button as ChackraButton, ButtonProps } from "@chakra-ui/react";
+import React from "react";
 
-  return (
-    <button
-      type="button"
-      className={`button${disabledCss}`}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {label}
-    </button>
-  );
-}
-
-Button.defaultProps = {
-  disabled: false,
-  onClick: () => {
-    /** */
-  },
+export const Button: React.FC<
+  ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
+  // eslint-disable-next-line react/function-component-definition
+> = ({ children, ...props }) => {
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  return <ChackraButton {...props}>{children}</ChackraButton>;
 };

@@ -1,30 +1,42 @@
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Heading,
+} from "@chakra-ui/react";
+
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { userActions } from "../../redux/user/user.reducer";
 import { RequestTypes } from "../../types/request.types";
 import { BoxElement } from "../BoxElement/BoxElement";
 import { Button } from "../Button/Button";
-import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 
 export function UserBox() {
   const dispatch = useAppDispatch();
 
   const requestStatus = useAppSelector((state) => state.user.requestStatus);
-  const errorMessage = useAppSelector((state) => state.user.errorMessage);
   const user = useAppSelector((state) => state.user.user);
 
   return (
-    <div className="box">
-      <Button
-        label="Get user data"
-        onClick={() => {
-          dispatch(userActions.getUserDataRequest({ userId: 1 }));
-        }}
-        disabled={requestStatus === RequestTypes.loading}
-      />
+    <Card>
+      <CardHeader>
+        <Heading size="md">User card</Heading>
+      </CardHeader>
+      <CardBody>
+        <BoxElement label="Name" value={user?.name} />
+      </CardBody>
 
-      <ErrorMessage message={errorMessage} />
-
-      <BoxElement label="Name" value={user?.name} />
-    </div>
+      <CardFooter>
+        <Button
+          onClick={() => {
+            dispatch(userActions.getUserDataRequest({ userId: 1 }));
+          }}
+          isLoading={requestStatus === RequestTypes.loading}
+        >
+          Get user data
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }

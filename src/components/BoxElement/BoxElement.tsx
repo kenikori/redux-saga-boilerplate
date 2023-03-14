@@ -1,3 +1,7 @@
+import { Container } from "@chakra-ui/react";
+
+import { Text } from "../Text/Text";
+
 export function BoxElement({
   label,
   value,
@@ -6,9 +10,9 @@ export function BoxElement({
   value: string | undefined;
 }) {
   return (
-    <div className="box-element">
-      <span className="box-element-label">{label}:</span>
-      <span className="box-element-value">{value ?? "-"}</span>
-    </div>
+    <Container>
+      <Text fontWeight="bold">{label}</Text>
+      <Text>{value ?? "-"}</Text>
+    </Container>
   );
 }
