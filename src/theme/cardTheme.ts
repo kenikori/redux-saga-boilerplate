@@ -8,7 +8,6 @@ const baseStyle = definePartsStyle({
   container: {
     backgroundColor: "#C0C7BC",
     borderRadius: 10,
-    borderWidth: 1,
     _dark: {
       backgroundColor: "#354F52",
       borderRadius: 10,
