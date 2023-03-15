@@ -21,8 +21,7 @@ export function Toast(): null {
       toast(toastOptions);
       dispatch(toastActions.resetToast());
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [toastOptions]);
+  }, [toastOptions, toast, dispatch]);
 
   return null;
 }

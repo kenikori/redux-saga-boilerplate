@@ -11,7 +11,9 @@ export function BoxElement({
 }) {
   return (
     <Container>
-      <Text fontWeight="bold">{label}</Text>
+      <Text fontWeight="bold" color="boxElementTitle">
+        {label}
+      </Text>
       <Text>{value ?? "-"}</Text>
     </Container>
   );

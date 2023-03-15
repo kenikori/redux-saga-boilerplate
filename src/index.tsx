@@ -1,6 +1,4 @@
-import "./index.css";
-
-import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
@@ -9,7 +7,7 @@ import App from "./App";
 import { Toast } from "./components/Toast/Toast";
 import { store } from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
-import theme from "./theme";
+import theme from "./theme/theme";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

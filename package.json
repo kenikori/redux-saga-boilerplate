@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/anatomy": "^2.1.1",
     "@chakra-ui/react": "^2.5.1",
     "@chakra-ui/theme": "^2.2.4",
     "@chakra-ui/theme-tools": "^2.0.16",
@@ -20,6 +21,7 @@
     "framer-motion": "^10.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
     "react-scripts": "5.0.1",
     "redux-saga": "^1.2.2",
