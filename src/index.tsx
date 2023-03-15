@@ -6,6 +6,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 
 import App from "./App";
+import { Toast } from "./components/Toast/Toast";
 import { store } from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
 import theme from "./theme";
@@ -18,6 +19,7 @@ root.render(
     <React.StrictMode>
       <Provider store={store}>
         <App />
+        <Toast />
       </Provider>
     </React.StrictMode>
   </ChakraProvider>
