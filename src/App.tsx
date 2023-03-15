@@ -7,14 +7,14 @@ import { UserBox } from "./components/UserBox/UserBox";
 
 function App() {
   return (
-      <Container maxW="md">
-        <Box maxW="md" margin={2}>
-          <UserBox />
-        </Box>
-        <Box maxW="md" margin={2}>
-          <PostBox />
-        </Box>
-      </Container>
+    <Container maxW="md">
+      <Box maxW="md" margin={2}>
+        <UserBox />
+      </Box>
+      <Box maxW="md" margin={2}>
+        <PostBox />
+      </Box>
+    </Container>
   );
 }
 
