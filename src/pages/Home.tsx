@@ -1,10 +1,10 @@
 import { Box, Center, Container } from "@chakra-ui/react";
 
-import { ColorModeSwitcher } from "./components/ColorModeSwitcher/ColorModeSwitcher";
-import { PostBox } from "./components/PostBox/PostBox";
-import { UserBox } from "./components/UserBox/UserBox";
+import { ColorModeSwitcher } from "../components/ColorModeSwitcher/ColorModeSwitcher";
+import { PostBox } from "../components/PostBox/PostBox";
+import { UserBox } from "../components/UserBox/UserBox";
 
-function App() {
+function Home() {
   return (
     <Container maxW="md" marginTop={4}>
       <Center>
@@ -22,4 +22,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

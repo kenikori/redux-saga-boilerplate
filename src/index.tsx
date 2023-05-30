@@ -1,24 +1,40 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from "./App";
+import Protected from "./components/Protected/Protected";
 import { Toast } from "./components/Toast/Toast";
-import { store } from "./redux/store";
+import Home from "./pages/Home";
+import SignIn from "./pages/SignIn";
 import reportWebVitals from "./reportWebVitals";
 import theme from "./theme/theme";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <Protected isLoggedIn={false}>
+        <Home />
+      </Protected>
+    ),
+  },
+  {
+    path: "/sign-in",
+    element: <SignIn />,
+  },
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <ChakraProvider theme={theme}>
     <React.StrictMode>
-      <Provider store={store}>
-        <App />
-        <Toast />
-      </Provider>
+      <RouterProvider router={router} />
+
+      <Toast />
     </React.StrictMode>
   </ChakraProvider>
 );
