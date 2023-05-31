@@ -1,6 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Protected from "./components/Protected/Protected";
@@ -9,6 +10,8 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import reportWebVitals from "./reportWebVitals";
 import theme from "./theme/theme";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -32,9 +35,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <ChakraProvider theme={theme}>
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
 
-      <Toast />
+        <Toast />
+      </QueryClientProvider>
     </React.StrictMode>
   </ChakraProvider>
 );
